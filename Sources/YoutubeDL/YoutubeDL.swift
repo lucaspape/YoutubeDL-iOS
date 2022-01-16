@@ -48,6 +48,10 @@ public struct Info: CustomStringConvertible {
     public var description: String {
         "\(dict?["title"] ?? "no title?")"
     }
+    
+    public subscript(dynamicMember key: String) -> String? {
+        dict?[key].flatMap { String($0) }
+    }
 }
 
 let chunkSize: Int64 = 10_000_000
